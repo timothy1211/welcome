@@ -1,75 +1,101 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Twitter, Github, Linkedin } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube, Github } from 'lucide-react';
 
-export const Footer: React.FC = () => {
+const Footer = () => {
+  const socialLinks = [
+    { icon: Facebook, href: '#' },
+    { icon: Twitter, href: '#' },
+    { icon: Instagram, href: '#' },
+    { icon: Youtube, href: '#' },
+    { icon: Github, href: '#' }
+  ];
+
   return (
-    <footer className="bg-trezor-green text-white">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="bg-primary text-white py-16">
+      <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
-          <div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center space-x-2 mb-4"
-            >
-              <Shield className="w-8 h-8" />
-              <span className="text-2xl font-bold">Trézor</span>
-            </motion.div>
-            <p className="text-trezor-light-green">
-              Securing your digital assets with cutting-edge technology.
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-2xl font-bold mb-4">Tre̾zor</h3>
+            <p className="text-gray-300">
+              Securing your digital assets with the most trusted hardware wallet in the world.
             </p>
-          </div>
+          </motion.div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Products</h3>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h4 className="text-lg font-semibold mb-4">Products</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-trezor-light-green transition-colors">Hardware Wallet</a></li>
-              <li><a href="#" className="hover:text-trezor-light-green transition-colors">Software Suite</a></li>
-              <li><a href="#" className="hover:text-trezor-light-green transition-colors">Mobile App</a></li>
+              <li><a href="#" className="hover:text-gray-300 transition-colors">Tre̾zor One</a></li>
+              <li><a href="#" className="hover:text-gray-300 transition-colors">Tre̾zor Model T</a></li>
+              <li><a href="#" className="hover:text-gray-300 transition-colors">Accessories</a></li>
+              <li><a href="#" className="hover:text-gray-300 transition-colors">Compare</a></li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Support</h3>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h4 className="text-lg font-semibold mb-4">Support</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-trezor-light-green transition-colors">Help Center</a></li>
-              <li><a href="#" className="hover:text-trezor-light-green transition-colors">Documentation</a></li>
-              <li><a href="#" className="hover:text-trezor-light-green transition-colors">Contact Us</a></li>
+              <li><a href="#" className="hover:text-gray-300 transition-colors">Help Center</a></li>
+              <li><a href="#" className="hover:text-gray-300 transition-colors">Contact Us</a></li>
+              <li><a href="#" className="hover:text-gray-300 transition-colors">FAQ</a></li>
+              <li><a href="#" className="hover:text-gray-300 transition-colors">Security</a></li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Connect</h3>
-            <div className="flex space-x-4">
-              <motion.a
-                whileHover={{ scale: 1.2 }}
-                href="#"
-                className="hover:text-trezor-light-green transition-colors"
-              >
-                <Twitter className="w-6 h-6" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.2 }}
-                href="#"
-                className="hover:text-trezor-light-green transition-colors"
-              >
-                <Github className="w-6 h-6" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.2 }}
-                href="#"
-                className="hover:text-trezor-light-green transition-colors"
-              >
-                <Linkedin className="w-6 h-6" />
-              </motion.a>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h4 className="text-lg font-semibold mb-4">Company</h4>
+            <ul className="space-y-2">
+              <li><a href="#" className="hover:text-gray-300 transition-colors">About Us</a></li>
+              <li><a href="#" className="hover:text-gray-300 transition-colors">Careers</a></li>
+              <li><a href="#" className="hover:text-gray-300 transition-colors">Press</a></li>
+              <li><a href="#" className="hover:text-gray-300 transition-colors">Blog</a></li>
+            </ul>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 pt-8 border-t border-white/20"
+        >
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="text-sm text-gray-300">
+              © 2025 Tre̾zor. All rights reserved.
+            </div>
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  whileHover={{ scale: 1.2 }}
+                  className="hover:text-gray-300 transition-colors"
+                >
+                  <social.icon size={20} />
+                </motion.a>
+              ))}
             </div>
           </div>
-        </div>
-
-        <div className="border-t border-trezor-light-green/20 mt-8 pt-8 text-center">
-          <p>&copy; {new Date().getFullYear()} Trézor. All rights reserved.</p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
 };
+
+export default Footer;

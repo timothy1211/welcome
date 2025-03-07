@@ -1,51 +1,62 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Shield, Lock } from 'lucide-react';
 
-export const Hero: React.FC = () => {
+const Hero = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white to-trezor-light-green pt-20">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-5xl md:text-6xl font-bold text-trezor-green mb-6">
-              Secure Your Digital Assets
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Start your journey into secure cryptocurrency management with Trézor's trusted hardware wallet solution.
-            </p>
-            <div className="flex space-x-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                className="bg-trezor-green text-white px-8 py-3 rounded-full text-lg"
-              >
-                Get Your Trézor
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                className="border-2 border-trezor-green text-trezor-green px-8 py-3 rounded-full text-lg"
-              >
-                Continue with Browser
-              </motion.button>
-            </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
+    <div className="pt-32 pb-20 px-4">
+      <div className="container mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center max-w-4xl mx-auto"
+        >
+          <motion.h1 
+            className="text-5xl md:text-7xl font-bold text-primary mb-6"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative"
+            transition={{ delay: 0.2 }}
           >
-            <img
-              src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=800"
-              alt="Trézor Device"
-              className="rounded-lg shadow-2xl"
-            />
+            Secure Your Digital Treasure
+          </motion.h1>
+          
+          <motion.p
+            className="text-xl text-gray-600 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            Start your journey to crypto security with the world's most trusted hardware wallet
+          </motion.p>
+
+          <motion.div
+            className="flex flex-col sm:flex-row justify-center gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+          >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-primary text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-primary-light transition-colors flex items-center justify-center"
+            >
+              <Shield className="mr-2" />
+              Get Your Tre̾zor
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="border-2 border-primary text-primary px-8 py-4 rounded-full text-lg font-medium hover:bg-primary hover:text-white transition-colors flex items-center justify-center"
+            >
+              <Lock className="mr-2" />
+              Continue with Browser
+            </motion.button>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
 };
+
+export default Hero;

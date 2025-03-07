@@ -1,46 +1,82 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
-export const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+const Header = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <motion.header
+    <motion.header 
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md"
+      className="fixed w-full bg-white/80 backdrop-blur-lg z-50"
     >
-      <nav className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <motion.div
+          <motion.div 
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
+            className="text-2xl font-bold text-primary"
           >
-            <Shield className="w-8 h-8 text-trezor-green" />
-            <span className="text-2xl font-bold text-trezor-green">Trézor</span>
+            Tre̾zor
           </motion.div>
 
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-gray-700 hover:text-trezor-green transition-colors">Features</a>
-            <a href="#security" className="text-gray-700 hover:text-trezor-green transition-colors">Security</a>
-            <a href="#support" className="text-gray-700 hover:text-trezor-green transition-colors">Support</a>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="bg-trezor-green text-white px-6 py-2 rounded-full"
-            >
-              Get Started
-            </motion.button>
-          </div>
+          <nav className="hidden md:flex items-center space-x-8">
+            {['Products', 'Features', 'Security', 'Support'].map((item) => (
+              <motion.a
+                key={item}
+                href="#"
+                whileHover={{ scale: 1.1 }}
+                className="text-primary hover:text-primary-light transition-colors"
+              >
+                {item}
+              </motion.a>
+            ))}
+          </nav>
 
-          <button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="hidden md:block bg-primary text-white px-6 py-2 rounded-full hover:bg-primary-light transition-colors"
           >
-            {isMenuOpen ? <X /> : <Menu />}
+            Get Started
+          </motion.button>
+
+          <button 
+            className="md:hidden"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X /> : <Menu />}
           </button>
         </div>
-      </nav>
+      </div>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          className="md:hidden bg-white"
+        >
+          <div className="container mx-auto px-4 py-4">
+            <nav className="flex flex-col space-y-4">
+              {['Products', 'Features', 'Security', 'Support'].map((item) => (
+                <a
+                  key={item}
+                  href="#"
+                  className="text-primary hover:text-primary-light transition-colors"
+                >
+                  {item}
+                </a>
+              ))}
+              <button className="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary-light transition-colors">
+                Get Started
+              </button>
+            </nav>
+          </div>
+        </motion.div>
+      )}
     </motion.header>
   );
 };
+
+export default Header;

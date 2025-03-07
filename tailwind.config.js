@@ -4,10 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        'trezor': {
-          'green': '#1A5D1A',
-          'light-green': '#B4D4B4',
-          'dark': '#1a1a1a',
+        primary: {
+          DEFAULT: '#00513A',
+          light: '#006E4F',
+          dark: '#003C2B',
+        },
+        secondary: {
+          DEFAULT: '#FFFFFF',
+          dark: '#F0F0F0',
         }
       },
       animation: {
